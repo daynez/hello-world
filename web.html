@@ -1,0 +1,96 @@
+<html>
+
+  <head>
+    <title>ACT Prep Sct 6</title>
+
+    <script>
+      area = function(w, h) {
+        return (w * h);
+      }
+
+      sroot = function(y) {
+        var x = parseFloat(y);
+        var lo=0.0;
+        var hi=0.0, d=0.0, t=0.0;  
+
+        if (x < 0.0)
+          return 0.0;
+
+        if (x == 0.0)
+          return 0.0;
+
+        if (x == 1.0) {
+          return 1.0;
+        } else if (x < 1.0) {
+          hi = 1.0;
+        } else {
+         hi = x;
+        }
+
+        t = 0.5 * (lo + hi);
+        d = x - t*t;
+
+        while (d*d > 1.0e-20) {
+          if (t*t < x)
+            lo = t;
+          else
+            hi = t;
+          t = 0.5*(lo + hi);
+          d = x - t*t;
+        }
+        return t;
+      }
+
+      geometry = function() {
+        var x = 0;
+        var y = 0;
+        var A = 0;
+
+        x = window.prompt("Input rectangle width");
+        y = window.prompt("Input rectangle height");
+        A = area(x, y);
+        window.alert("Area = " + A.toString());
+        return 0;
+      }
+    </script>
+
+  </head>
+
+  <body style="background-color: ffffff;">
+    <center>```````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
+      <h1 style="color: blue;">Hello World!</h1>
+      <h2>Hello Again!</h2>
+    <p>Hello everybody</p>
+    <img id="pic1" src="http://www.franklincountydogs.com/adopt/assets/images/adoptable-size.jpg" />
+    <br/>
+    <table border="1">
+      <tr>
+        <td>Bloomberg</td>
+        <td>Business news</td>
+        <td><a href="http://www.bloomberg.com">click here</a></td>
+      </tr>   
+      <tr>
+        <td>CNN</td>
+        <td>National and international news</td>
+        <td><a href="http://www.cnn.com">click here</a></td>
+      </tr>   
+ 
+    </table
+
+    <br />
+    <button onclick="document.getElementById('pic1').src='http://r.ddmcdn.com/s_f/o_1/w_1024/h_576/APL/uploads/2014/06/dogs-101-showsite.jpg'">Change Picture</button>
+    <br />
+    <button onclick="geometry()">Geometry</button>
+    <br />
+    <h2>Square Root Calculator</h2>
+      Enter input value and press the CALC button.
+      <input type="text" id="inValue">
+      <button type="button"
+         onclick="document.getElementById('outValue').innerHTML=sroot(document.getElementById('inValue').value)">
+         Calculate</button><br />
+    <div id="outValue">waiting</div>
+    </center>
+
+  </body>
+
+</html>
