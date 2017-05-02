@@ -1,3 +1,4 @@
+#include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -6,6 +7,14 @@
 
 int main() {
 
+    int i, j, k, n;
+    size_t sz;
+    double x, y, z;
+
+/*  Here we declare an integer array */
+    int m[10];
+
+/*  Here we create a structure for holding an order */
     struct _order {
         int part_no;
         int qty;
@@ -13,13 +22,18 @@ int main() {
         float price;
     } typedef order;
 
-    int i, j, k, n;
-    int m[10];
-    double x, y, z;
+/*  And here we declare two structures.  div_t is
+    created in the stdlib.h header.  order was
+    created right above. */
     div_t dt;
-
     order o;
 
+    sz = sizeof(order);
+    printf("Size of the order structure is %d\n", sz);
+    sz = offsetof(order, price);
+    printf("Offset of the price in the order structure is %d\n", sz);
+    
+/*  You access the elements of the structure using the dot operator */
     o.part_no = 2001;
     o.qty = 10;
     strncpy(o.name, "Fan Belt", 10);
